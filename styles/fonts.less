@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'DogeSans';
+  font-style: normal;
+  font-weight: normal;;
+  src: url('/resources/fonts/dogesans-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'SucoDeLaranja';
+  font-style: normal;
+  font-weight: normal;;
+  src: url('/resources/fonts/suco-de-laranja.woff') format('woff');
+}
+
+@font-default: 'DogeSans';
+@font-special: '';
+
+.font-default(@font-size: 15px, @line-height: 1.3em) {
+  color: #000000;
+  font-family: @font-default;
+  font-size: @font-size;
+  line-height: @line-height;
+}

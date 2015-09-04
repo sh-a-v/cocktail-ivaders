@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="text/javascript" src="./scripts/vendor/lodash.min.js"></script>
+    <script type="text/javascript" src="./scripts/vendor/ymodules.js"></script>
+    <script type="text/javascript" src="./scripts/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="./scripts/vendor/typed.min.js"></script>
+
+    <script type="text/javascript" src="./scripts/core/tools.js"></script>
+    <script type="text/javascript" src="./scripts/core/base.js"></script>
+    <script type="text/javascript" src="./scripts/core/pubsub.js"></script>
+    <script type="text/javascript" src="./scripts/core/view.js"></script>
+    <script type="text/javascript" src="./scripts/core/canvas.js"></script>
+    <script type="text/javascript" src="./scripts/core/drawable.js"></script>
+    <script type="text/javascript" src="./scripts/core/debouncer.js"></script>
+    <script type="text/javascript" src="./scripts/core/sprite.js"></script>
+    <script type="text/javascript" src="./scripts/core/resource.js"></script>
+
+    <script type="text/javascript" src="./scripts/app/constants.js"></script>
+    <script type="text/javascript" src="./scripts/app/dispatcher.js"></script>
+    <script type="text/javascript" src="./scripts/app/drawer.js"></script>
+    <script type="text/javascript" src="./scripts/app/events.js"></script>
+    <script type="text/javascript" src="./scripts/app/state-loop.js"></script>
+    <script type="text/javascript" src="./scripts/app/app-canvas.js"></script>
+    <script type="text/javascript" src="./scripts/app/controls.js"></script>
+
+    <script type="text/javascript" src="./scripts/app/scene.js"></script>
+    <script type="text/javascript" src="./scripts/app/screens/screen-base.js"></script>
+    <script type="text/javascript" src="./scripts/app/screens/screen-intro.js"></script>
+    <script type="text/javascript" src="./scripts/app/screens/screen-game.js"></script>
+
+    <script type="text/javascript" src="./scripts/app/game/canvas.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/game.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/player.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/bullets.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/enemies.js"></script>
+
+    <script type="text/javascript" src="./scripts/app/game/objects/bottle.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/objects/cake.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/objects/explosion.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/objects/enemies.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/objects/enemies/base.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/objects/enemies/enemy1.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/objects/enemies/enemy2.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/objects/enemies/enemy3.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/objects/enemies/enemy4.js"></script>
+    <script type="text/javascript" src="./scripts/app/game/objects/enemies/enemy5.js"></script>
+
+    <script type="text/javascript" src="./scripts/app/init.js"></script>
+    <script type="text/javascript" src="./scripts/app/index.js"></script>
+
+    <link rel="stylesheet/less" type="text/css" href="./styles/all.less" />
+    <script type="text/javascript" src="./scripts/vendor/less.min.js"></script>
+
+  </head>
+  <body>
+    <div id="app">
+      <div class="scenes">
+        <div class="scene m-intro m-hidden" data-name="intro">
+          <div class="controls">
+            <div class="control m-yes">
+              <span class="text">YES</span>
+            </div>
+            <div class="control m-no">
+              <span class="text">NO</span>
+              <span class="text m-visible-on-hover">YES</span>
+            </div>
+          </div>
+          <div class="karina">
+            <div class="karina-dialog">
+              <div class="karina-dialog-text"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scene m-game m-hidden" data-name="game">
+          <div class="game-wrapper">
+            <div class="game"></div>
+          </div>
+          <div class="overflow"></div>
+          <div class="title">COCKTAIL INVADERS</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

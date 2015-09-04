@@ -1,0 +1,264 @@
+.scenes {
+  left: 0;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.scene {
+  left: 0;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.scene {
+  .transition(0.5s);
+  overflow: hidden;
+
+  &:not(.m-hidden) {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  &.m-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.scene.m-intro {
+
+  &::before {
+    background-image: url('/resources/images/hypno-cat.gif');
+    background-size: cover;
+    background-position: 50% 50%;
+    content: ' ';
+    height: 100%;
+    left: 0;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    //animation: rotating 10s linear infinite;
+  }
+
+  .karina {
+    .transition(1s);
+    background-image: url('/resources/images/karina-tiger-penny.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    bottom: 0;
+    height: 387px;
+    right: -300px;
+    opacity: 0;
+    position: absolute;
+    width: 200px;
+  }
+  .karina-dialog {
+    .transition-prop(opacity, 0.15s);
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: 2px solid #000000;
+    height: 100px;
+    opacity: 0;
+    padding: 10px;
+    position: absolute;
+    right: -75px;
+    top: -150px;
+    width: 150px;
+  }
+  .karina-dialog-text {
+    //font: DogeSans 15px/1.3em;
+    font-family: 'DogeSans';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.3em;
+  }
+
+  .controls {
+    .transition(0.5s);
+    bottom: 270px;
+    left: 54%;
+    opacity: 0;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    z-index: -1;
+
+  }
+
+  .control {
+    .vertical-align-middle();
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+
+    .text {
+      .user-select(none);
+      .vertical-align-middle();
+      display: inline-block;
+      font-family: 'DogeSans';
+      line-height: normal;
+    }
+
+    &.m-yes {
+      border: 2px solid #000000;
+      border-radius: 25px;
+      margin-right: 20px;
+      padding: 20px 0;
+      width: 150px;
+
+      .text {
+        font-size: 50px;
+      }
+    }
+
+    &.m-no {
+      border: 2px solid #777777;
+      border-radius: 15px;
+      margin-right: 20px;
+      padding: 20px 0;
+      width: 70px;
+
+      .text {
+        color: #777777;
+        font-size: 15px;
+      }
+
+      &:hover {
+        .text:not(.m-visible-on-hover) {
+          display: none;
+        }
+      }
+      &:not(:hover) {
+        .text.m-visible-on-hover {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.m-karina-appears {
+    .karina {
+      opacity: 1;
+      right: 50%;
+      transform: translateX(7%);
+    }
+  }
+  &.m-karina-speaks {
+    .karina-dialog {
+      opacity: 1;
+    }
+  }
+  &.m-controls-shown {
+    .controls {
+      opacity: 1;
+      z-index: auto;
+    }
+  }
+  &.m-yes-pressed {
+    .controls {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+  &.m-karina-disappears {
+    .karina {
+      .transition(2s);
+      opacity: 0;
+      right: 110%;
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.scene.m-game {
+
+  .game-wrapper {
+    height: 1046px;
+    margin: 0 auto;
+    position: relative;
+    top: 10px;
+    width: 1009px;
+
+    /*&::before {
+      background-image: url('/resources/images/old-pc-monitor.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      content: ' ';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 2;
+    }*/
+  }
+
+  .game {
+    border: 1px solid #000000;
+    height: 650px;
+    left: 76px;
+    position: absolute;
+    top: 80px;
+    width: 850px;
+    z-index: 1;
+
+    canvas {
+      height: 650px;
+      width: 850px;
+    }
+  }
+
+  .overflow {
+    .transition(0.7s);
+    background-color: #ffffff;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .title {
+    .transition(0.7s);
+    transform: translateY(-50%) scale(0);
+    color: #df9ad0;
+    font-family: 'SucoDeLaranja';
+    font-size: 170px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+    z-index: 3;
+  }
+
+  &.m-title-appears {
+    /*.overflow {
+      opacity: 0;
+    }*/
+    .title {
+      transform: translateY(-50%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  &.m-title-disappears {
+    .overflow {
+      opacity: 0;
+    }
+    .title {
+      opacity: 0;
+    }
+  }
+}
