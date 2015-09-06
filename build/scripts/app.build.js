@@ -2045,6 +2045,7 @@
 
         _bindEvents : function() {
           Drawer.on('animation-frame', function(delta) {
+            delta = Math.min(delta, 0.05);
             this._currentMoveOffset += this._movingSpeed * delta * this._movingDelta
           }.bind(this));
         },
@@ -2123,6 +2124,7 @@
     });
 
 }(this, this.modules));
+
 (function(window, modules){
 
   modules.define(
