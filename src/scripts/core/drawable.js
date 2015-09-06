@@ -119,7 +119,7 @@
         _updateSize : function() {
           this.size({
             width  : consts.GAME_WIDTH,
-            height : consts.GAME_HEIGHT
+            height : window.innerHeight * 2
           });
         }
 

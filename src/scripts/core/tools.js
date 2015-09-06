@@ -16,6 +16,10 @@
       return c;
     }
 
+    function size() {
+
+    }
+
     provide({
       extend: extend
     });

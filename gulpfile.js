@@ -49,7 +49,7 @@ gulp.task('stylesheets', function() {
     .pipe(less())
     .pipe(cssBase64({
       maxWeightResource: 10000000,
-      extensionsAllowed: ['.gif', '.jpg', '.png']
+      extensionsAllowed: ['.gif', '.jpg', '.png', '.woff']
     }))
     .pipe(gulp.dest(paths.stylesheetsBuildFolder))
     .pipe(minifyCSS())
