@@ -26,7 +26,15 @@ var paths = {
   scriptsAppBuildFolder: 'build/scripts/',
   scriptsAppFiles: [
     scriptCoreSrcPath + '*.js',
-    scriptAppSrcPath + '*.js'
+
+    scriptAppSrcPath + '*.js',
+    scriptAppSrcPath + 'screens/*.js',
+    scriptAppSrcPath + 'game/*.js',
+    scriptAppSrcPath + 'game/objects/*.js',
+    scriptAppSrcPath + 'game/objects/enemies/*.js',
+
+    scriptAppSrcPath + 'init.js',
+    scriptAppSrcPath + 'index.js'
   ],
 
   templatesBuildFolder: 'build/',  /* Templates */
@@ -39,7 +47,10 @@ gulp.task('stylesheets', function() {
   return gulp.src(paths.stylesheetsFiles)
     .pipe(concat('app.build.less'))
     .pipe(less())
-    .pipe(cssBase64({maxWeightResource: 1000000}))
+    .pipe(cssBase64({
+      maxWeightResource: 10000000,
+      extensionsAllowed: ['.gif', '.jpg', '.png']
+    }))
     .pipe(gulp.dest(paths.stylesheetsBuildFolder))
     .pipe(minifyCSS())
     .pipe(rename({suffix: '.min'}))
@@ -61,7 +72,7 @@ gulp.task('scripts-app', function () {  /* Scripts app */
     .pipe(gulp.dest(paths.scriptsAppBuildFolder));
 });
 
-.task('templates', function () {
+gulp.task('templates', function () {
   return gulp.src(paths.templatesFiles)
     .pipe(gulp.dest(paths.templatesBuildFolder));
 });
