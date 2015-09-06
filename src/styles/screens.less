@@ -65,6 +65,7 @@
     opacity: 0;
     position: absolute;
     width: 200px;
+    transform: translateZ(0);
   }
   .karina-dialog {
     .transition-prop(opacity, 0.15s);
@@ -78,6 +79,7 @@
     right: -75px;
     top: -150px;
     width: 150px;
+    transform: translateZ(0);
   }
   .karina-dialog-text {
     //font: DogeSans 15px/1.3em;
@@ -155,7 +157,7 @@
     .karina {
       opacity: 1;
       right: 50%;
-      transform: translateX(7%);
+      transform: translate3d(7%, 0, 0);
     }
   }
   &.m-karina-speaks {
@@ -180,7 +182,7 @@
       .transition(2s);
       opacity: 0;
       right: 110%;
-      transform: translateX(-100%);
+      transform: translate3d(-100%, 0, 0);
     }
   }
 }
@@ -231,7 +233,7 @@
 
   .overflow {
     .transition(0.7s);
-    background-color: #ffffff;
+    background-color: rgba(255,255,255,0.8);
     height: 100%;
     left: 0;
     opacity: 1;
@@ -243,7 +245,7 @@
 
   .title {
     .transition(0.7s);
-    transform: translateY(-50%) scale(0);
+    transform: translate3d(0, -50%, 0) scale(0);
     color: #df9ad0;
     font-family: 'SucoDeLaranja';
     font-size: 170px;
@@ -261,7 +263,7 @@
       opacity: 0;
     }*/
     .title {
-      transform: translateY(-50%) scale(1);
+      transform: translate3d(0, -50%, 0) scale(1);
       opacity: 1;
     }
   }
