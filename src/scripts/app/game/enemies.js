@@ -92,6 +92,10 @@
           var obj = this._objects[index];
           this._makeExplosion(obj);
           this._objects.splice(index, 1);
+
+          if (this._objects.length === 0) {
+            this._notify('all-destroyed');
+          }
         },
 
         _bindEvents : function() {

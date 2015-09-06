@@ -7,7 +7,8 @@
       'consts',
       'PubSub',
       'ScreenIntro',
-      'ScreenGame'
+      'ScreenGame',
+      'ScreenEnd'
     ],
     function(
       provide,
@@ -15,7 +16,8 @@
       consts,
       PubSub,
       ScreenIntro,
-      ScreenGame
+      ScreenGame,
+      ScreenEnd
     ){
 
       var Scene = tools.extend(PubSub),
@@ -30,6 +32,7 @@
 
           this._screenIntro = null;
           this._screenGame  = null;
+          this._screenEnd  = null;
 
           this._initScreens();
 
@@ -42,6 +45,9 @@
           }
           if (_.isNull(this._screenGame)) {
             this._screenGame = new ScreenGame();
+          }
+          if (_.isNull(this._screenEnd)) {
+            this._screenEnd = new ScreenEnd();
           }
         },
 
@@ -58,6 +64,13 @@
               this._screenIntro.start();
             }.bind(this));
           }
+
+          this._screenGame.on('end', function() {
+            this._screenGame.fadeOut(function(){
+              this._screenEnd.fadeIn();
+              this._screenEnd.start();
+            }.bind(this));
+          }.bind(this));
         }
 
       });

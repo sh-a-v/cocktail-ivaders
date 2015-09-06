@@ -39,7 +39,9 @@
           },
 
           _bindEvents : function() {
-
+            this._game.on('game-over', function() {
+              this.nextState();
+            }.bind(this));
           },
 
           _getPartName : function() {
@@ -62,6 +64,12 @@
 
                 }.bind(this),
                 duration: 2000
+              },
+              {
+                name: 'end',
+                before: function() {
+                  this._notifyEnd();
+                }.bind(this)
               }
             ]);
           }

@@ -1296,7 +1296,8 @@
       'consts',
       'PubSub',
       'ScreenIntro',
-      'ScreenGame'
+      'ScreenGame',
+      'ScreenEnd'
     ],
     function(
       provide,
@@ -1304,7 +1305,8 @@
       consts,
       PubSub,
       ScreenIntro,
-      ScreenGame
+      ScreenGame,
+      ScreenEnd
     ){
 
       var Scene = tools.extend(PubSub),
@@ -1319,6 +1321,7 @@
 
           this._screenIntro = null;
           this._screenGame  = null;
+          this._screenEnd  = null;
 
           this._initScreens();
 
@@ -1331,6 +1334,9 @@
           }
           if (_.isNull(this._screenGame)) {
             this._screenGame = new ScreenGame();
+          }
+          if (_.isNull(this._screenEnd)) {
+            this._screenEnd = new ScreenEnd();
           }
         },
 
@@ -1347,6 +1353,13 @@
               this._screenIntro.start();
             }.bind(this));
           }
+
+          this._screenGame.on('end', function() {
+            this._screenGame.fadeOut(function(){
+              this._screenEnd.fadeIn();
+              this._screenEnd.start();
+            }.bind(this));
+          }.bind(this));
         }
 
       });
@@ -1584,6 +1597,56 @@
 (function(window, modules){
 
   modules.define(
+    'ScreenEnd',
+    [
+      'tools',
+      'Screen'
+    ],
+    function(
+      provide,
+      tools,
+      Screen
+    ){
+
+      var ScreenEnd = tools.extend(Screen),
+
+        $class = ScreenEnd,
+        $super = $class.superclass;
+
+      _.mixin($class.prototype, {
+
+        initialize : function(config) {
+          $super.initialize.apply(this, arguments);
+
+          this._bindEvents();
+        },
+
+        _bindEvents : function() {
+
+        },
+
+        _getPartName : function() {
+          return 'end';
+        },
+
+        _registerStates : function() {
+          this._registerState([
+            {
+              name: 'end'
+            }
+          ]);
+        }
+
+      });
+
+      provide(ScreenEnd);
+    });
+
+}(this, this.modules));
+
+(function(window, modules){
+
+  modules.define(
     'ScreenGame',
     [
       'tools',
@@ -1622,7 +1685,9 @@
           },
 
           _bindEvents : function() {
-
+            this._game.on('game-over', function() {
+              this.nextState();
+            }.bind(this));
           },
 
           _getPartName : function() {
@@ -1645,6 +1710,12 @@
 
                 }.bind(this),
                 duration: 2000
+              },
+              {
+                name: 'end',
+                before: function() {
+                  this._notifyEnd();
+                }.bind(this)
               }
             ]);
           }
@@ -1655,6 +1726,7 @@
   });
 
 }(this, this.modules));
+
 (function(window, modules){
 
   modules.define(
@@ -2041,6 +2113,10 @@
           var obj = this._objects[index];
           this._makeExplosion(obj);
           this._objects.splice(index, 1);
+
+          if (this._objects.length === 0) {
+            this._notify('all-destroyed');
+          }
         },
 
         _bindEvents : function() {
@@ -2193,6 +2269,10 @@
           this._canvas.on('frame-drawn', function() {
             this._onFrameDrawn();
           }.bind(this));
+
+          this._enemies.on('all-destroyed', function() {
+            this._notify('game-over');
+          }.bind(this));
         },
 
         _fireFriendlyBullet : function() {
@@ -2322,6 +2402,7 @@
     });
 
 }(this, this.modules));
+
 (function(window, modules){
 
   modules.define(

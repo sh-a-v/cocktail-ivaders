@@ -66,6 +66,10 @@
           this._canvas.on('frame-drawn', function() {
             this._onFrameDrawn();
           }.bind(this));
+
+          this._enemies.on('all-destroyed', function() {
+            this._notify('game-over');
+          }.bind(this));
         },
 
         _fireFriendlyBullet : function() {
