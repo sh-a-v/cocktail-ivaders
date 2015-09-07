@@ -298,8 +298,58 @@
 }
 
 .scene.m-end {
+  background: url("../resources/images/hpbg.gif") no-repeat center;
+  background-size: cover;
+
   &::before {
     opacity: 0.9;
+  }
+
+  .name-wrapper {
+    position: absolute;
+    top: 50px;
+    z-index: 3;
+
+    width: 100%;
+    text-align: center;
+  }
+
+  .name {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background: no-repeat center;
+    background-size: 100%;
+
+    &.k {
+      width: 80px;
+      background-image: url("../resources/images/words/k.gif");
+    }
+
+    &.a {
+      width: 240px;
+      background-image: url("../resources/images/words/a.gif");
+    }
+
+    &.r {
+      width: 100px;
+      background-image: url("../resources/images/words/r.gif");
+    }
+
+    &.i {
+      width: 100px;
+      background-image: url("../resources/images/words/i.gif");
+    }
+
+    &.n {
+      width: 100px;
+      background-image: url("../resources/images/words/n.gif");
+    }
+
+    &.aa {
+      width: 100px;
+      background-image: url("../resources/images/words/aa.gif");
+    }
   }
 
   .text {
@@ -310,7 +360,7 @@
     font-size: 100px;
     left: 0;
     position: relative;
-    top: 30%;
+    top: 270px;
     text-align: center;
     width: 100%;
     z-index: 3;
@@ -318,10 +368,38 @@
     -webkit-text-stroke: 2px #0DE5A8;
     letter-spacing: 3px;
   }
+
+  .ou {
+    position: absolute;
+    transform: translate3d(-100%, -20%, 0);
+    left: 50%;
+    top: 300px;
+    z-index: 4;
+
+    width: 200px;
+    height: 100px;
+
+    background: url("../resources/images/ou.gif") no-repeat center;
+    background-size: 100%;
+  }
+
+  .fe {
+    position: absolute;
+    right: 60px;
+    top: 30%;
+    z-index: 1;
+
+    width: 35%;
+    height: 35%;
+
+    background: url("../resources/images/fe.gif") no-repeat center;
+    background-size: 100%;
+  }
   
   .pony {
     position: absolute;
     bottom: 0;
+    z-index: 6;
 
     width: 100%;
     height: 200px;
