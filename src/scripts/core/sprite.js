@@ -31,6 +31,7 @@
           this._currentStep        = 0;
           this._steps              = 0;
           this._speed              = 100;
+          this._delay              = 0;
           this._direction          = consts.SPRITE_DIRECTION_VER;
           this._loop               = true;
           this._animating          = true;
@@ -46,6 +47,9 @@
             }
             if (config.speed) {
               this._speed = config.speed;
+            }
+            if (config.delay) {
+              this._delay = config.delay;
             }
             if (config.direction) {
               this._direction = config.direction;
@@ -108,8 +112,17 @@
 
           if (nextStepNumber > this._steps) {
             if (this._loop === false) {
-              this._isStopped = true;
-              this._notify('animation-end');
+
+              if (this._delay) {
+                setTimeout(function() {
+                  this._isStopped = true;
+                  this._notify('animation-end');
+                }.bind(this), this._delay);
+              } else {
+                this._isStopped = true;
+                this._notify('animation-end');
+              }
+
               return;
             }
             this._currentStep = nextStepNumber % this._steps;

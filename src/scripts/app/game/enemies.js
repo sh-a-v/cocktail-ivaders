@@ -9,7 +9,8 @@
       'Drawer',
       'Cake',
       'AllEnemies',
-      'Explosion'
+      'Explosion',
+      'Protection'
     ],
     function(
       provide,
@@ -19,7 +20,8 @@
       Drawer,
       Cake,
       AllEnemies,
-      Explosion
+      Explosion,
+      Protection
     ){
 
       var Enemies = tools.extend(Drawable),
@@ -44,7 +46,8 @@
           this._offsetX     = this._canvas.width  / 2 - this._totalWidth  / 2 - this._movingSpeed / 2;
           this._offsetY     = 100;
 
-          this._explosions  = [];
+          this._explosions   = [];
+          this._protections  = [];
 
           this.createObjects();
           this._startDeltaChanging();
@@ -90,12 +93,22 @@
 
         destroyObject : function(index) {
           var obj = this._objects[index];
+
+          if (obj.protect) {
+            return;
+          }
+
           this._makeExplosion(obj);
           this._objects.splice(index, 1);
 
           if (this._objects.length === 0) {
             this._notify('all-destroyed');
           }
+        },
+
+        protectObject : function(index) {
+          var obj = this._objects[index];
+          this._makeProtection(obj);
         },
 
         _bindEvents : function() {
@@ -134,10 +147,35 @@
           });
         },
 
+        _makeProtection : function(obj) {
+          var x = obj.x + obj.w / 2,
+            y = obj.y + obj.h / 2,
+            e = new Protection();
+
+          obj.protect = true;
+
+          e.on('animation-end', function(){
+            var index;
+            e.off();
+            obj.protect = false;
+            index = this._protections.map(function(o, i){if (o.o === e) {return i}}).filter(function(i){return i !== undefined})[0];
+            if (index !== undefined) {
+              this._protections.splice(index, 1);
+            }
+          }.bind(this));
+
+          this._protections.push({
+            o: e,
+            x: obj.x + obj.w / 2 - consts.PROTECTION_WIDTH / 2,
+            y: obj.y + obj.h / 2 - consts.PROTECTION_HEIGHT / 2
+          });
+        },
+
         _draw : function() {
           this.redraw();
           this._drawObjects();
           this._drawExplosions();
+          this._drawProtections();
           this._clear();
         },
 
@@ -151,6 +189,17 @@
 
         _drawExplosions : function() {
           this._explosions.forEach(function(e){
+            var o = e.o,
+                s = o.size();
+
+            o.draw();
+
+            this._context.drawImage(o.getCanvas(), e.x, e.y, s.width, s.height);
+          }.bind(this));
+        },
+
+        _drawProtections : function() {
+          this._protections.forEach(function(e){
             var o = e.o,
                 s = o.size();
 

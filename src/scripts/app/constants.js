@@ -37,7 +37,10 @@
       ENEMIES_COLS_COUNT   : 10,
 
       EXPLOSION_WIDTH      : 48 * 2,
-      EXPLOSION_HEIGHT     : 48 * 2
+      EXPLOSION_HEIGHT     : 48 * 2,
+
+      PROTECTION_WIDTH     : 64 * 2,
+      PROTECTION_HEIGHT    : 64 * 2
 
     });
   })

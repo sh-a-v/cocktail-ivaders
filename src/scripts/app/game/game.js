@@ -104,6 +104,11 @@
           var bullets = this._bullets.getObjects(),
               enemies = this._enemies.getObjects({ plain: true });
 
+          var random = Math.floor(Math.random() * 100) + 1;
+          var protect = random >=1 && random <= 33;
+
+          var d = protect ? 100 : 0;
+
           if (bullets.length === 0 || enemies.length === 0) {
             return;
           }
@@ -119,7 +124,7 @@
                   r1 = { x: bullet.x, y: bullet.y, w: bullet.w, h: bullet.h },
                   r2 = { x: enemy.x + bb.l * 2,  y: enemy.y - bb.t,  w: bb.w,  h: bb.h };
 
-              if (r1.x < r2.x + r2.w && r1.x + r1.w > r2.x && r1.y < r2.y + r2.h && r1.h + r1.y > r2.y) {
+              if (r1.x < r2.x + r2.w && r1.x + r1.w > r2.x && r1.y < r2.y + r2.h && r1.h + r1.y > r2.y + d) {
 
                 collidedBullet = i;
                 collidedEnemy = j;
@@ -134,12 +139,19 @@
             })
           });
 
-          if (collidedBullet !== undefined) {
-            console.log(bullets[collidedBullet]);
+          if (collidedBullet !== undefined && collidedEnemy !== undefined) {
+            if (protect) {
+              this._enemies.protectObject(collidedEnemy);
+              setTimeout(function() {
+                this._bullets.destroyObject(collidedBullet);
+              }.bind(this), 200);
+            } else {
+              this._bullets.destroyObject(collidedBullet);
+              this._enemies.destroyObject(collidedEnemy);
+            }
+          } else if (collidedBullet !== undefined) {
             this._bullets.destroyObject(collidedBullet);
-          }
-          if (collidedEnemy !== undefined) {
-            console.log(enemies[collidedEnemy].x, enemies[collidedEnemy].o.getBoundingBox());
+          } else if (collidedEnemy !== undefined) {
             this._enemies.destroyObject(collidedEnemy);
           }
 
