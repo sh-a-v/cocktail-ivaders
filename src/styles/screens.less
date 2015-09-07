@@ -69,12 +69,13 @@
   }
   .karina-dialog {
     .transition-prop(opacity, 0.15s);
-    background-color: #ffffff;
+    background-color: #0DE5A8;
+    background-color: #595B5A;
     border-radius: 15px;
-    border: 2px solid #000000;
+    //border: 1px solid #000000;
     height: 100px;
     opacity: 0;
-    padding: 10px;
+    padding: 17px 10px 10px 20px;
     position: absolute;
     right: -75px;
     top: -150px;
@@ -83,11 +84,19 @@
   }
   .karina-dialog-text {
     //font: DogeSans 15px/1.3em;
-    font-family: 'DogeSans';
+    //font-family: 'DogeSans';
+    font-family: 'SucoDeLaranja';
     font-size: 15px;
     font-style: normal;
     font-weight: normal;
     line-height: 1.3em;
+
+    color: #595B5A;
+    -webkit-text-stroke: 2px #595B5A;
+    letter-spacing: 3px;
+
+    color: #fff;
+    -webkit-text-stroke: 2px #fff;
   }
 
   .controls {
@@ -108,16 +117,23 @@
     display: inline-block;
     text-align: center;
 
+    background-color: #0DE5A8;
+
     .text {
       .user-select(none);
       .vertical-align-middle();
       display: inline-block;
-      font-family: 'DogeSans';
+      //font-family: 'DogeSans';
+      font-family: 'SucoDeLaranja';
       line-height: normal;
+
+      color: #595B5A;
+      -webkit-text-stroke: 2px #595B5A;
+      letter-spacing: 3px;
     }
 
     &.m-yes {
-      border: 2px solid #000000;
+      //border: 1px solid #000000;
       border-radius: 25px;
       margin-right: 20px;
       padding: 20px 0;
@@ -129,7 +145,7 @@
     }
 
     &.m-no {
-      border: 2px solid #777777;
+      //border: 1px solid #000;
       border-radius: 15px;
       margin-right: 20px;
       padding: 20px 0;
@@ -256,6 +272,9 @@
     text-align: center;
     width: 100%;
     z-index: 3;
+
+    -webkit-text-stroke: 2px black;
+    letter-spacing: 3px;
   }
 
   &.m-title-appears {
@@ -295,6 +314,9 @@
     text-align: center;
     width: 100%;
     z-index: 3;
+
+    -webkit-text-stroke: 2px black;
+    letter-spacing: 3px;
   }
   
   .pony {

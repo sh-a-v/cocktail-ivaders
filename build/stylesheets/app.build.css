@@ -225,12 +225,12 @@ body {
   -moz-transition: opacity 0.15s ease-out;
   -o-transition: opacity 0.15s ease-out;
   transition: opacity 0.15s ease-out;
-  background-color: #ffffff;
+  background-color: #0DE5A8;
+  background-color: #595B5A;
   border-radius: 15px;
-  border: 2px solid #000000;
   height: 100px;
   opacity: 0;
-  padding: 10px;
+  padding: 17px 10px 10px 20px;
   position: absolute;
   right: -75px;
   top: -150px;
@@ -238,11 +238,16 @@ body {
   transform: translateZ(0);
 }
 .scene.m-intro .karina-dialog-text {
-  font-family: 'DogeSans';
+  font-family: 'SucoDeLaranja';
   font-size: 15px;
   font-style: normal;
   font-weight: normal;
   line-height: 1.3em;
+  color: #595B5A;
+  -webkit-text-stroke: 2px #595B5A;
+  letter-spacing: 3px;
+  color: #fff;
+  -webkit-text-stroke: 2px #fff;
 }
 .scene.m-intro .controls {
   -webkit-transition: all 0.5s ease-out;
@@ -266,6 +271,7 @@ body {
   cursor: pointer;
   display: inline-block;
   text-align: center;
+  background-color: #0DE5A8;
 }
 .scene.m-intro .control .text {
   -webkit-user-select: none;
@@ -278,11 +284,13 @@ body {
   vertical-align: middle;
   vertical-align: -webkit-baseline-middle;
   display: inline-block;
-  font-family: 'DogeSans';
+  font-family: 'SucoDeLaranja';
   line-height: normal;
+  color: #595B5A;
+  -webkit-text-stroke: 2px #595B5A;
+  letter-spacing: 3px;
 }
 .scene.m-intro .control.m-yes {
-  border: 2px solid #000000;
   border-radius: 25px;
   margin-right: 20px;
   padding: 20px 0;
@@ -292,7 +300,6 @@ body {
   font-size: 50px;
 }
 .scene.m-intro .control.m-no {
-  border: 2px solid #777777;
   border-radius: 15px;
   margin-right: 20px;
   padding: 20px 0;
@@ -400,6 +407,8 @@ body {
   text-align: center;
   width: 100%;
   z-index: 3;
+  -webkit-text-stroke: 2px black;
+  letter-spacing: 3px;
 }
 .scene.m-game.m-title-appears {
   /*.overflow {
@@ -434,6 +443,8 @@ body {
   text-align: center;
   width: 100%;
   z-index: 3;
+  -webkit-text-stroke: 2px black;
+  letter-spacing: 3px;
 }
 .scene.m-end .pony {
   position: absolute;

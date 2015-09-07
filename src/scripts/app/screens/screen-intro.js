@@ -101,7 +101,7 @@
           },
 
           _speakIntro : function() {
-            return this._speak('hey m^25a^25a^25a^25a^25a^25a^25a^25a^25a^25a^25a^25a^25a^25an, ^300have you ever striked down cocktails by cidor caps? ^500Wanna try?');
+            return this._speak('hey m^25a^25a^25a^25a^25a^25a^25a^25a^25a^25an, ^300have you ever striked down cocktails by cidor caps? ^500Wanna try?');
           },
 
           _speak : function(text) {
