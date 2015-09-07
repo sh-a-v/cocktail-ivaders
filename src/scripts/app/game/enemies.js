@@ -71,7 +71,7 @@
                 x: j * consts.ENEMY_CELL_WIDTH  + this._offsetX,
                 y: i * consts.ENEMY_CELL_HEIGHT + this._offsetY,
                 w: consts.ENEMY_CELL_WIDTH,
-                h: consts.ENEMY_CELL_HEIGHT
+                h: consts.ENEMY_CELL_HEIGHT + 50
               });
             }
             tmp2.push(tmp);

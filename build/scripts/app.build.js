@@ -2097,7 +2097,7 @@
                 x: j * consts.ENEMY_CELL_WIDTH  + this._offsetX,
                 y: i * consts.ENEMY_CELL_HEIGHT + this._offsetY,
                 w: consts.ENEMY_CELL_WIDTH,
-                h: consts.ENEMY_CELL_HEIGHT
+                h: consts.ENEMY_CELL_HEIGHT + 50
               });
             }
             tmp2.push(tmp);
@@ -2444,7 +2444,7 @@
           this._speed  = 500;
 
           this.x = consts.GAME_WIDTH / 2 - consts.PLAYER_WIDTH / 2;
-          this.y = window.innerHeight * 2 - consts.PLAYER_HEIGHT - 30;
+          this.y = window.innerHeight * 2 - consts.PLAYER_HEIGHT + 50;
 
           this._initObjects();
         },

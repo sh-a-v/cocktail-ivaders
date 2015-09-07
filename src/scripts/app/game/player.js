@@ -34,7 +34,7 @@
           this._speed  = 500;
 
           this.x = consts.GAME_WIDTH / 2 - consts.PLAYER_WIDTH / 2;
-          this.y = window.innerHeight * 2 - consts.PLAYER_HEIGHT //- 30;
+          this.y = window.innerHeight * 2 - consts.PLAYER_HEIGHT + 50;
 
           this._initObjects();
         },
