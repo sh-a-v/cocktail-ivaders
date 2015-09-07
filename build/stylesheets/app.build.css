@@ -397,7 +397,7 @@ body {
   -o-transition: all 0.7s ease-out;
   transition: all 0.7s ease-out;
   transform: translate3d(0, -50%, 0) scale(0);
-  color: #df9ad0;
+  color: #0DE5A8;
   font-family: 'SucoDeLaranja';
   font-size: 170px;
   left: 0;
@@ -407,7 +407,7 @@ body {
   text-align: center;
   width: 100%;
   z-index: 3;
-  -webkit-text-stroke: 2px black;
+  -webkit-text-stroke: 2px #0DE5A8;
   letter-spacing: 3px;
 }
 .scene.m-game.m-title-appears {
@@ -434,7 +434,7 @@ body {
   -o-transition: all 0.7s ease-out;
   transition: all 0.7s ease-out;
   transform: translate3d(0, -50%, 0);
-  color: #f20cb5;
+  color: #0DE5A8;
   font-family: 'SucoDeLaranja';
   font-size: 100px;
   left: 0;
@@ -443,7 +443,7 @@ body {
   text-align: center;
   width: 100%;
   z-index: 3;
-  -webkit-text-stroke: 2px black;
+  -webkit-text-stroke: 2px #0DE5A8;
   letter-spacing: 3px;
 }
 .scene.m-end .pony {

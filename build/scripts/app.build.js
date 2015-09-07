@@ -1341,6 +1341,10 @@
         },
 
         start : function() {
+          this._screenGame.fadeIn();
+          this._screenGame.start();
+          return;
+
           if (this._screenIntro) {
             this._screenIntro.on('end', function() {
               this._screenIntro.fadeOut(function(){
